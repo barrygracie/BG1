@@ -24,10 +24,10 @@ public class Minesweeper {
     public static int inputMineNo(int size){
         Scanner sc= new Scanner(System.in);
         int mines = 0;
-        while(mines<1 || mines>= (size*10)){
+        while(mines<1 || mines>= (size*size)){
             System.out.println("\nPlease enter the number of Mines: ");
             mines =  sc.nextInt();
-            if(mines<1 || mines>= (size*10)){
+            if(mines<1 || mines>= (size*size)){
                 System.out.println("Invalid number of mines");
             }
         }

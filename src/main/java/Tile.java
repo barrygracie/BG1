@@ -28,7 +28,7 @@ public class Tile {
     }
 
     public boolean getGuessStatus(){
-        return isFlag;
+        return isGuessed;
     }
 
     public void setMine(){

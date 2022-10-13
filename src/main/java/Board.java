@@ -38,6 +38,11 @@ public class Board {
         {
             int i = random.nextInt(noOfMines);
             int j = random.nextInt(noOfMines);
+            //TODO Check for duplicate mines
+            while(grid[i][j].isMine){
+                i = random.nextInt(noOfMines);
+                j = random.nextInt(noOfMines);
+            }
             grid[i][j].setMine();
             a++;
         }
@@ -49,33 +54,33 @@ public class Board {
         //simplify this
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                int cnt = 0;
+                int count = 0;
                 if (!grid[i][j].isMine) {
                     if (i != 0) {
-                        if (grid[i - 1][j].isMine) cnt++;
+                        if (grid[i - 1][j].isMine) count++;
                         if (j != 0) {
-                            if (grid[i - 1][j - 1].isMine) cnt++;
+                            if (grid[i - 1][j - 1].isMine) count++;
                         }
                     }
                     if (i != (boardSize - 1)) {
-                        if (grid[i + 1][j].isMine) cnt++;
+                        if (grid[i + 1][j].isMine) count++;
                         if (j != boardSize-1) {
-                            if (grid[i + 1][j + 1].isMine) cnt++;
+                            if (grid[i + 1][j + 1].isMine) count++;
                         }
                     }
                     if (j != 0) {
-                        if (grid[i][j - 1].isMine) cnt++;
+                        if (grid[i][j - 1].isMine) count++;
                         if (i != boardSize-1) {
-                            if (grid[i + 1][j - 1].isMine) cnt++;
+                            if (grid[i + 1][j - 1].isMine) count++;
                         }
                     }
                     if (j != (boardSize - 1)) {
-                        if (grid[i][j + 1].isMine) cnt++;
+                        if (grid[i][j + 1].isMine) count++;
                         if (i != 0) {
-                            if (grid[i - 1][j + 1].isMine) cnt++;
+                            if (grid[i - 1][j + 1].isMine) count++;
                         }
                     }
-                    grid[i][j].setMineCounter(cnt);
+                    grid[i][j].setMineCounter(count);
                 }
             }
         }
