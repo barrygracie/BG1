@@ -2,24 +2,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Board {
-
-
-    //Array of tiles for all grid information
     Tile [][] grid;
-
-    //Boolean Array for checking
-    Boolean [][] check;
-    
-    //Variable to allow a set number of mines
     int noOfMines;
-
-    //Variable to store the size of the board for use in methods
     int boardSize;
 
     //Constructor Method
     public Board (int boardSize, int noOfMines){
         this.grid = new Tile [boardSize][boardSize];
-        this.check = new Boolean [boardSize][boardSize];
         this.noOfMines = noOfMines;
         this.boardSize = boardSize;
 
@@ -49,18 +38,16 @@ public class Board {
     //Method to set the mine counters on the tile grid after mines are set
 
     public void setMineCounters() {
-        //
+        //simplify this
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 int cnt = 0;
                 if (!grid[i][j].isMine) {
-
                     if (i != 0) {
                         if (grid[i - 1][j].isMine) cnt++;
                         if (j != 0) {
                             if (grid[i - 1][j - 1].isMine) cnt++;
                         }
-
                     }
                     if (i != (boardSize - 1)) {
                         if (grid[i + 1][j].isMine) cnt++;
@@ -80,7 +67,6 @@ public class Board {
                             if (grid[i - 1][j + 1].isMine) cnt++;
                         }
                     }
-
                     grid[i][j].setMineCounter(cnt);
                 }
             }
@@ -88,13 +74,16 @@ public class Board {
     }
 
     //Method to display the current game board to user
-    //TODO test flags
     public void displayBoard()
     {
         System.out.print("\t ");
         for(int i=0; i<boardSize; i++)
         {
-            System.out.print(" " + i + "  ");
+            if(i<10){System.out.print(" " + i + "  ");}
+            else if(i<100){System.out.print(i + "  ");}
+            else{System.out.print(i+" ");}
+
+
         }
         System.out.print("\n");
         for(int i=0; i<boardSize; i++)
@@ -107,14 +96,12 @@ public class Board {
                 }
                 else if(grid[i][j].isGuessed)
                 {
-
                     if (grid[i][j].getMineCounter()>0){
                         System.out.print(grid[i][j].getMineCounter());
                     }
                     else{
                         System.out.print(" ");
                     }
-
                 }
                 else{
                     System.out.print("?");
@@ -148,12 +135,13 @@ public class Board {
                     //System.out.print(" ");
                     System.out.print(grid[i][j].getMineCounter());
                 }
-
                 System.out.print(" | ");
             }
             System.out.print("\n");
         }
     }
+
+    //Method to update the board, takes in a coordinate
 
     public void updateBoard(int y, int x){
         for(int i=-1; i<=1; i++){
@@ -170,28 +158,24 @@ public class Board {
                             grid[i+y][j+x].setGuessed();
                         }
                 }
-
             }
         }
-
-
-
-
     }
+
+    //Method to play a move
 
     public boolean playMove()
     {
-        //add something here to place a flag
         Scanner sc= new Scanner(System.in);
         int choice;
         do{
-            System.out.println("Press 1 to take a guess, Press 2 to place a flag");
+            System.out.println("Press 1 to take a guess, Press 2 to place or remove a flag");
             choice = sc.nextInt();
-
         }
-        while(choice!=1 && choice!=2);
+        while(choice<1 || choice>2);
 
         if(choice==1){
+            System.out.print("Guessing");
             System.out.print("\nEnter Row Number: ");
             int y= sc.nextInt();
             System.out.print("Enter Column Number: ");
@@ -214,10 +198,11 @@ public class Board {
                 grid[y][x].setGuessed();
                 updateBoard(y,x);
             }
-
             return true;
-        } else if (choice==2) {
 
+        }
+        else if (choice==2) {
+            System.out.print("Setting Flag");
             System.out.print("\nEnter Row Number: ");
             int y= sc.nextInt();
             System.out.print("Enter Column Number: ");
@@ -229,12 +214,8 @@ public class Board {
                 return true;
             }
             grid[y][x].setFlag();
-
-
         }
         return true;
-
-
     }
 
     //Method to check if the game is won
@@ -254,12 +235,7 @@ public class Board {
                 }
             }
         }
-        if(guessCounter==(boardSize*boardSize)-noOfMines || correctFlags==noOfMines){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return guessCounter == (boardSize * boardSize) - noOfMines || correctFlags == noOfMines;
 
     }
 

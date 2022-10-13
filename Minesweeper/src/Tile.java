@@ -39,6 +39,7 @@ public class Tile {
         this.isFlag = !this.isFlag;
     }
 
+
     public void setGuessed(){ this.isGuessed = true;}
 
     public int getMineCounter(){

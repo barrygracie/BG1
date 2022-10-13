@@ -3,42 +3,55 @@ import java.util.*;
 public class Minesweeper {
     public static Board b;
 
-
-    public static void main(String[] args)
-    {
-        startGame();
+    public static void main(String[] args) {
+        Board gameBoard = runSetup();
+        startGame(gameBoard);
     }
 
     public static int inputBoardSize(){
+
         Scanner sc= new Scanner(System.in);
-        System.out.println("\n\nPlease enter the board size: ");
-        return sc.nextInt();
+        int size = 0;
+        while(size<1){
+            System.out.println("\nPlease enter the board size: ");
+            size = sc.nextInt();
+            if(size<1){System.out.println("Invalid board size");}
+        }
+        return size;
 
     }
 
-    public static int inputMineNo(){
+    public static int inputMineNo(int size){
         Scanner sc= new Scanner(System.in);
-        System.out.println("\n\nPlease enter the number of Mines: ");
-        return sc.nextInt();
-
-
+        int mines = 0;
+        while(mines<1 || mines>= (size*10)){
+            System.out.println("\nPlease enter the number of Mines: ");
+            mines =  sc.nextInt();
+            if(mines<1 || mines>= (size*10)){
+                System.out.println("Invalid number of mines");
+            }
+        }
+        return mines;
     }
 
-    public static void startGame(){
-        System.out.println("\n\n================Welcome to Minesweeper ! ================\n");
+    public static Board runSetup(){
         int bs = inputBoardSize();
-        int nm = inputMineNo();
+        int nm = inputMineNo(bs);
         b = new Board(bs,nm);
         b.setupMines();
         b.setMineCounters();
-        b.displayBoard();
-        b.displayMines();
+        return b;
+    }
 
-        boolean flag = true;
-        while(flag)
+    public static void startGame(Board b){
+        System.out.println("\n\n=========================================================\n");
+        System.out.print("MINESWEEPER");
+
+        boolean gameOn = true;
+        while(gameOn)
         {
             b.displayBoard();
-            flag = b.playMove();
+            gameOn = b.playMove();
             if(b.checkWin())
             {
                 b.displayMines();
@@ -46,10 +59,6 @@ public class Minesweeper {
                 break;
             }
         }
-
-
-
-
     }
 
 }
