@@ -25,9 +25,10 @@ public class Board {
     public void setupMines()
     {
         int a=0;
+        Random random = new Random();
+
         while(a!=noOfMines)
         {
-            Random random = new Random();
             int i = random.nextInt(noOfMines);
             int j = random.nextInt(noOfMines);
             grid[i][j].setMine();
