@@ -38,7 +38,7 @@ public class Minesweeper {
         int bs = inputBoardSize();
         int nm = inputMineNo(bs);
         b = new Board(bs,nm);
-        b.setupMines();
+        b.setupMines(b.getRandom());
         b.setMineCounters();
         return b;
     }

@@ -6,11 +6,14 @@ public class Board {
     int noOfMines;
     int boardSize;
 
+    Random random;
+
     //Constructor Method
     public Board (int boardSize, int noOfMines){
         this.grid = new Tile [boardSize][boardSize];
         this.noOfMines = noOfMines;
         this.boardSize = boardSize;
+        this.random = new Random();
 
         //fill array with tiles
         for(int i = 0;i<boardSize;i++){
@@ -20,12 +23,16 @@ public class Board {
         }
     }
 
+    public Random getRandom(){
+        return random;
+    }
+
     //Method to set up mines in the tile grid, assigns mines randomly
 
-    public void setupMines()
+    public void setupMines(Random random)
     {
         int a=0;
-        Random random = new Random();
+        //Random random = new Random();
 
         while(a!=noOfMines)
         {
@@ -133,8 +140,8 @@ public class Board {
                     System.out.print("M");
                 }
                 else{
-                    //System.out.print(" ");
-                    System.out.print(grid[i][j].getMineCounter());
+                    System.out.print(" ");
+                    //System.out.print(grid[i][j].getMineCounter());
                 }
                 System.out.print(" | ");
             }
