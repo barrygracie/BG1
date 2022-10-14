@@ -4,8 +4,10 @@ public class Minesweeper {
     public static Board b;
 
     public static void main(String[] args) {
-        Board gameBoard = runSetup();
-        startGame(gameBoard);
+        int bs = inputBoardSize();
+        int nm = inputMineNo(bs);
+        b = setupGameBoard(bs,nm);
+        startGame(b);
     }
 
     public static int inputBoardSize(){
@@ -34,10 +36,8 @@ public class Minesweeper {
         return mines;
     }
 
-    public static Board runSetup(){
-        int bs = inputBoardSize();
-        int nm = inputMineNo(bs);
-        b = new Board(bs,nm);
+    public static Board setupGameBoard(int size, int noOfMines){
+        b = new Board(size,noOfMines);
         b.setupMines(b.getRandom());
         b.setMineCounters();
         return b;

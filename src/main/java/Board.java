@@ -32,13 +32,11 @@ public class Board {
     public void setupMines(Random random)
     {
         int a=0;
-        //Random random = new Random();
 
         while(a!=noOfMines)
         {
             int i = random.nextInt(noOfMines);
             int j = random.nextInt(noOfMines);
-            //TODO Check for duplicate mines
             while(grid[i][j].isMine){
                 i = random.nextInt(noOfMines);
                 j = random.nextInt(noOfMines);

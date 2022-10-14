@@ -4,43 +4,43 @@
     public static Board b;
 
     public static void main(String[] args) {
-<span class="nc" id="L7">        Board gameBoard = runSetup();</span>
-<span class="nc" id="L8">        startGame(gameBoard);</span>
-<span class="nc" id="L9">    }</span>
+<span class="nc" id="L7">        int bs = inputBoardSize();</span>
+<span class="nc" id="L8">        int nm = inputMineNo(bs);</span>
+<span class="nc" id="L9">        b = setupGameBoard(bs,nm);</span>
+<span class="nc" id="L10">        startGame(b);</span>
+<span class="nc" id="L11">    }</span>
 
     public static int inputBoardSize(){
 
-<span class="nc" id="L13">        Scanner sc= new Scanner(System.in);</span>
-<span class="nc" id="L14">        int size = 0;</span>
-<span class="nc bnc" id="L15" title="All 2 branches missed.">        while(size&lt;1){</span>
-<span class="nc" id="L16">            System.out.println(&quot;\nPlease enter the board size: &quot;);</span>
-<span class="nc" id="L17">            size = sc.nextInt();</span>
-<span class="nc bnc" id="L18" title="All 2 branches missed.">            if(size&lt;1){System.out.println(&quot;Invalid board size&quot;);}</span>
+<span class="nc" id="L15">        Scanner sc= new Scanner(System.in);</span>
+<span class="nc" id="L16">        int size = 0;</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        while(size&lt;1){</span>
+<span class="nc" id="L18">            System.out.println(&quot;\nPlease enter the board size: &quot;);</span>
+<span class="nc" id="L19">            size = sc.nextInt();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            if(size&lt;1){System.out.println(&quot;Invalid board size&quot;);}</span>
         }
-<span class="nc" id="L20">        return size;</span>
+<span class="nc" id="L22">        return size;</span>
 
     }
 
     public static int inputMineNo(int size){
-<span class="nc" id="L25">        Scanner sc= new Scanner(System.in);</span>
-<span class="nc" id="L26">        int mines = 0;</span>
-<span class="nc bnc" id="L27" title="All 4 branches missed.">        while(mines&lt;1 || mines&gt;= (size*size)){</span>
-<span class="nc" id="L28">            System.out.println(&quot;\nPlease enter the number of Mines: &quot;);</span>
-<span class="nc" id="L29">            mines =  sc.nextInt();</span>
-<span class="nc bnc" id="L30" title="All 4 branches missed.">            if(mines&lt;1 || mines&gt;= (size*size)){</span>
-<span class="nc" id="L31">                System.out.println(&quot;Invalid number of mines&quot;);</span>
+<span class="nc" id="L27">        Scanner sc= new Scanner(System.in);</span>
+<span class="nc" id="L28">        int mines = 0;</span>
+<span class="nc bnc" id="L29" title="All 4 branches missed.">        while(mines&lt;1 || mines&gt;= (size*size)){</span>
+<span class="nc" id="L30">            System.out.println(&quot;\nPlease enter the number of Mines: &quot;);</span>
+<span class="nc" id="L31">            mines =  sc.nextInt();</span>
+<span class="nc bnc" id="L32" title="All 4 branches missed.">            if(mines&lt;1 || mines&gt;= (size*size)){</span>
+<span class="nc" id="L33">                System.out.println(&quot;Invalid number of mines&quot;);</span>
             }
         }
-<span class="nc" id="L34">        return mines;</span>
+<span class="nc" id="L36">        return mines;</span>
     }
 
-    public static Board runSetup(){
-<span class="nc" id="L38">        int bs = inputBoardSize();</span>
-<span class="nc" id="L39">        int nm = inputMineNo(bs);</span>
-<span class="nc" id="L40">        b = new Board(bs,nm);</span>
-<span class="nc" id="L41">        b.setupMines(b.getRandom());</span>
-<span class="nc" id="L42">        b.setMineCounters();</span>
-<span class="nc" id="L43">        return b;</span>
+    public static Board setupGameBoard(int size, int noOfMines){
+<span class="fc" id="L40">        b = new Board(size,noOfMines);</span>
+<span class="fc" id="L41">        b.setupMines(b.getRandom());</span>
+<span class="fc" id="L42">        b.setMineCounters();</span>
+<span class="fc" id="L43">        return b;</span>
     }
 
     public static void startGame(Board b){

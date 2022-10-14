@@ -32,223 +32,221 @@ public class Board {
     public void setupMines(Random random)
     {
 <span class="fc" id="L34">        int a=0;</span>
-        //Random random = new Random();
 
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        while(a!=noOfMines)</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        while(a!=noOfMines)</span>
         {
-<span class="fc" id="L39">            int i = random.nextInt(noOfMines);</span>
-<span class="fc" id="L40">            int j = random.nextInt(noOfMines);</span>
-            //TODO Check for duplicate mines
-<span class="fc bfc" id="L42" title="All 2 branches covered.">            while(grid[i][j].isMine){</span>
-<span class="fc" id="L43">                i = random.nextInt(noOfMines);</span>
-<span class="fc" id="L44">                j = random.nextInt(noOfMines);</span>
+<span class="fc" id="L38">            int i = random.nextInt(noOfMines);</span>
+<span class="fc" id="L39">            int j = random.nextInt(noOfMines);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            while(grid[i][j].isMine){</span>
+<span class="fc" id="L41">                i = random.nextInt(noOfMines);</span>
+<span class="fc" id="L42">                j = random.nextInt(noOfMines);</span>
             }
-<span class="fc" id="L46">            grid[i][j].setMine();</span>
-<span class="fc" id="L47">            a++;</span>
-<span class="fc" id="L48">        }</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L44">            grid[i][j].setMine();</span>
+<span class="fc" id="L45">            a++;</span>
+<span class="fc" id="L46">        }</span>
+<span class="fc" id="L47">    }</span>
 
     //Method to set the mine counters on the tile grid after mines are set
 
     public void setMineCounters() {
         //simplify this
-<span class="fc bfc" id="L55" title="All 2 branches covered.">        for (int i = 0; i &lt; boardSize; i++) {</span>
-<span class="fc bfc" id="L56" title="All 2 branches covered.">            for (int j = 0; j &lt; boardSize; j++) {</span>
-<span class="fc" id="L57">                int count = 0;</span>
-<span class="fc bfc" id="L58" title="All 2 branches covered.">                if (!grid[i][j].isMine) {</span>
-<span class="fc bfc" id="L59" title="All 2 branches covered.">                    if (i != 0) {</span>
-<span class="fc bfc" id="L60" title="All 2 branches covered.">                        if (grid[i - 1][j].isMine) count++;</span>
-<span class="fc bfc" id="L61" title="All 2 branches covered.">                        if (j != 0) {</span>
-<span class="fc bfc" id="L62" title="All 2 branches covered.">                            if (grid[i - 1][j - 1].isMine) count++;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (int i = 0; i &lt; boardSize; i++) {</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            for (int j = 0; j &lt; boardSize; j++) {</span>
+<span class="fc" id="L55">                int count = 0;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">                if (!grid[i][j].isMine) {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">                    if (i != 0) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                        if (grid[i - 1][j].isMine) count++;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                        if (j != 0) {</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">                            if (grid[i - 1][j - 1].isMine) count++;</span>
                         }
                     }
-<span class="fc bfc" id="L65" title="All 2 branches covered.">                    if (i != (boardSize - 1)) {</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">                        if (grid[i + 1][j].isMine) count++;</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">                        if (j != boardSize-1) {</span>
-<span class="fc bfc" id="L68" title="All 2 branches covered.">                            if (grid[i + 1][j + 1].isMine) count++;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">                    if (i != (boardSize - 1)) {</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">                        if (grid[i + 1][j].isMine) count++;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">                        if (j != boardSize-1) {</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">                            if (grid[i + 1][j + 1].isMine) count++;</span>
                         }
                     }
-<span class="fc bfc" id="L71" title="All 2 branches covered.">                    if (j != 0) {</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">                        if (grid[i][j - 1].isMine) count++;</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">                        if (i != boardSize-1) {</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">                            if (grid[i + 1][j - 1].isMine) count++;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">                    if (j != 0) {</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">                        if (grid[i][j - 1].isMine) count++;</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">                        if (i != boardSize-1) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">                            if (grid[i + 1][j - 1].isMine) count++;</span>
                         }
                     }
-<span class="fc bfc" id="L77" title="All 2 branches covered.">                    if (j != (boardSize - 1)) {</span>
-<span class="fc bfc" id="L78" title="All 2 branches covered.">                        if (grid[i][j + 1].isMine) count++;</span>
-<span class="fc bfc" id="L79" title="All 2 branches covered.">                        if (i != 0) {</span>
-<span class="fc bfc" id="L80" title="All 2 branches covered.">                            if (grid[i - 1][j + 1].isMine) count++;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">                    if (j != (boardSize - 1)) {</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                        if (grid[i][j + 1].isMine) count++;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                        if (i != 0) {</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">                            if (grid[i - 1][j + 1].isMine) count++;</span>
                         }
                     }
-<span class="fc" id="L83">                    grid[i][j].setMineCounter(count);</span>
+<span class="fc" id="L81">                    grid[i][j].setMineCounter(count);</span>
                 }
             }
         }
-<span class="fc" id="L87">    }</span>
+<span class="fc" id="L85">    }</span>
 
     //Method to display the current game board to user
     public void displayBoard()
     {
-<span class="nc" id="L92">        System.out.print(&quot;\t &quot;);</span>
-<span class="nc bnc" id="L93" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
+<span class="nc" id="L90">        System.out.print(&quot;\t &quot;);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
         {
-<span class="nc bnc" id="L95" title="All 2 branches missed.">            if(i&lt;10){System.out.print(&quot; &quot; + i + &quot;  &quot;);}</span>
-<span class="nc bnc" id="L96" title="All 2 branches missed.">            else if(i&lt;100){System.out.print(i + &quot;  &quot;);}</span>
-<span class="nc" id="L97">            else{System.out.print(i+&quot; &quot;);}</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">            if(i&lt;10){System.out.print(&quot; &quot; + i + &quot;  &quot;);}</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            else if(i&lt;100){System.out.print(i + &quot;  &quot;);}</span>
+<span class="nc" id="L95">            else{System.out.print(i+&quot; &quot;);}</span>
 
 
         }
-<span class="nc" id="L101">        System.out.print(&quot;\n&quot;);</span>
-<span class="nc bnc" id="L102" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
+<span class="nc" id="L99">        System.out.print(&quot;\n&quot;);</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
         {
-<span class="nc" id="L104">            System.out.print(i + &quot;\t| &quot;);</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">            for(int j=0; j&lt;boardSize; j++)</span>
+<span class="nc" id="L102">            System.out.print(i + &quot;\t| &quot;);</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            for(int j=0; j&lt;boardSize; j++)</span>
             {
-<span class="nc bnc" id="L107" title="All 2 branches missed.">                if(grid[i][j].isFlag){</span>
-<span class="nc" id="L108">                    System.out.print(&quot;F&quot;);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                if(grid[i][j].isFlag){</span>
+<span class="nc" id="L106">                    System.out.print(&quot;F&quot;);</span>
                 }
-<span class="nc bnc" id="L110" title="All 2 branches missed.">                else if(grid[i][j].isGuessed)</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">                else if(grid[i][j].isGuessed)</span>
                 {
-<span class="nc bnc" id="L112" title="All 2 branches missed.">                    if (grid[i][j].getMineCounter()&gt;0){</span>
-<span class="nc" id="L113">                        System.out.print(grid[i][j].getMineCounter());</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">                    if (grid[i][j].getMineCounter()&gt;0){</span>
+<span class="nc" id="L111">                        System.out.print(grid[i][j].getMineCounter());</span>
                     }
                     else{
-<span class="nc" id="L116">                        System.out.print(&quot; &quot;);</span>
+<span class="nc" id="L114">                        System.out.print(&quot; &quot;);</span>
                     }
                 }
                 else{
-<span class="nc" id="L120">                    System.out.print(&quot;?&quot;);</span>
+<span class="nc" id="L118">                    System.out.print(&quot;?&quot;);</span>
                 }
 
-<span class="nc" id="L123">                System.out.print(&quot; | &quot;);</span>
+<span class="nc" id="L121">                System.out.print(&quot; | &quot;);</span>
             }
-<span class="nc" id="L125">            System.out.print(&quot;\n&quot;);</span>
+<span class="nc" id="L123">            System.out.print(&quot;\n&quot;);</span>
         }
-<span class="nc" id="L127">    }</span>
+<span class="nc" id="L125">    }</span>
 
     //Method to display all mines at end of game
 
     public void displayMines(){
-<span class="nc" id="L132">        System.out.print(&quot;\t &quot;);</span>
-<span class="nc bnc" id="L133" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
+<span class="nc" id="L130">        System.out.print(&quot;\t &quot;);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
         {
-<span class="nc" id="L135">            System.out.print(&quot; &quot; + i + &quot;  &quot;);</span>
+<span class="nc" id="L133">            System.out.print(&quot; &quot; + i + &quot;  &quot;);</span>
         }
-<span class="nc" id="L137">        System.out.print(&quot;\n&quot;);</span>
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
+<span class="nc" id="L135">        System.out.print(&quot;\n&quot;);</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
         {
-<span class="nc" id="L140">            System.out.print(i + &quot;\t| &quot;);</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">            for(int j=0; j&lt;boardSize; j++)</span>
+<span class="nc" id="L138">            System.out.print(i + &quot;\t| &quot;);</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">            for(int j=0; j&lt;boardSize; j++)</span>
             {
-<span class="nc bnc" id="L143" title="All 2 branches missed.">                if(grid[i][j].isMine)</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">                if(grid[i][j].isMine)</span>
                 {
-<span class="nc" id="L145">                    System.out.print(&quot;M&quot;);</span>
+<span class="nc" id="L143">                    System.out.print(&quot;M&quot;);</span>
                 }
                 else{
-<span class="nc" id="L148">                    System.out.print(&quot; &quot;);</span>
+<span class="nc" id="L146">                    System.out.print(&quot; &quot;);</span>
                     //System.out.print(grid[i][j].getMineCounter());
                 }
-<span class="nc" id="L151">                System.out.print(&quot; | &quot;);</span>
+<span class="nc" id="L149">                System.out.print(&quot; | &quot;);</span>
             }
-<span class="nc" id="L153">            System.out.print(&quot;\n&quot;);</span>
+<span class="nc" id="L151">            System.out.print(&quot;\n&quot;);</span>
         }
-<span class="nc" id="L155">    }</span>
+<span class="nc" id="L153">    }</span>
 
     //Method to update the board, takes in a coordinate
 
     public void updateBoard(int y, int x){
-<span class="fc bfc" id="L160" title="All 2 branches covered.">        for(int i=-1; i&lt;=1; i++){</span>
-<span class="fc bfc" id="L161" title="All 2 branches covered.">            for(int j=-1; j&lt;=1; j++){</span>
-<span class="fc bfc" id="L162" title="All 8 branches covered.">                if((i+y)&lt;boardSize &amp;&amp; (j+x)&lt;boardSize &amp;&amp; (i+y)&gt;=0 &amp;&amp; (j+x)&gt;=0){</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">        for(int i=-1; i&lt;=1; i++){</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">            for(int j=-1; j&lt;=1; j++){</span>
+<span class="fc bfc" id="L160" title="All 8 branches covered.">                if((i+y)&lt;boardSize &amp;&amp; (j+x)&lt;boardSize &amp;&amp; (i+y)&gt;=0 &amp;&amp; (j+x)&gt;=0){</span>
 
-<span class="pc bpc" id="L164" title="2 of 6 branches missed.">                        if(grid[i+y][j+x].getMineCounter()==0 &amp;&amp; !grid[i+y][j+x].isMine &amp;&amp; !grid[i+y][j+x].isGuessed)</span>
+<span class="pc bpc" id="L162" title="2 of 6 branches missed.">                        if(grid[i+y][j+x].getMineCounter()==0 &amp;&amp; !grid[i+y][j+x].isMine &amp;&amp; !grid[i+y][j+x].isGuessed)</span>
                         {
-<span class="fc" id="L166">                            grid[i+y][j+x].setGuessed();</span>
-<span class="fc" id="L167">                            updateBoard(i+y,j+x);</span>
+<span class="fc" id="L164">                            grid[i+y][j+x].setGuessed();</span>
+<span class="fc" id="L165">                            updateBoard(i+y,j+x);</span>
                         }
-<span class="pc bpc" id="L169" title="5 of 6 branches missed.">                        else if(grid[i+y][j+x].getMineCounter()&gt;0 &amp;&amp; !grid[i+y][j+x].isMine &amp;&amp; !grid[i+y][j+x].isGuessed)</span>
+<span class="pc bpc" id="L167" title="5 of 6 branches missed.">                        else if(grid[i+y][j+x].getMineCounter()&gt;0 &amp;&amp; !grid[i+y][j+x].isMine &amp;&amp; !grid[i+y][j+x].isGuessed)</span>
                         {
-<span class="nc" id="L171">                            grid[i+y][j+x].setGuessed();</span>
+<span class="nc" id="L169">                            grid[i+y][j+x].setGuessed();</span>
                         }
                 }
             }
         }
-<span class="fc" id="L176">    }</span>
+<span class="fc" id="L174">    }</span>
 
     //Method to play a move
 
     public boolean playMove()
     {
-<span class="nc" id="L182">        Scanner sc= new Scanner(System.in);</span>
+<span class="nc" id="L180">        Scanner sc= new Scanner(System.in);</span>
         int choice;
         do{
-<span class="nc" id="L185">            System.out.println(&quot;Press 1 to take a guess, Press 2 to place or remove a flag&quot;);</span>
-<span class="nc" id="L186">            choice = sc.nextInt();</span>
+<span class="nc" id="L183">            System.out.println(&quot;Press 1 to take a guess, Press 2 to place or remove a flag&quot;);</span>
+<span class="nc" id="L184">            choice = sc.nextInt();</span>
         }
-<span class="nc bnc" id="L188" title="All 4 branches missed.">        while(choice&lt;1 || choice&gt;2);</span>
+<span class="nc bnc" id="L186" title="All 4 branches missed.">        while(choice&lt;1 || choice&gt;2);</span>
 
-<span class="nc bnc" id="L190" title="All 2 branches missed.">        if(choice==1){</span>
-<span class="nc" id="L191">            System.out.print(&quot;Guessing&quot;);</span>
-<span class="nc" id="L192">            System.out.print(&quot;\nEnter Row Number: &quot;);</span>
-<span class="nc" id="L193">            int y= sc.nextInt();</span>
-<span class="nc" id="L194">            System.out.print(&quot;Enter Column Number: &quot;);</span>
-<span class="nc" id="L195">            int x= sc.nextInt();</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">        if(choice==1){</span>
+<span class="nc" id="L189">            System.out.print(&quot;Guessing&quot;);</span>
+<span class="nc" id="L190">            System.out.print(&quot;\nEnter Row Number: &quot;);</span>
+<span class="nc" id="L191">            int y= sc.nextInt();</span>
+<span class="nc" id="L192">            System.out.print(&quot;Enter Column Number: &quot;);</span>
+<span class="nc" id="L193">            int x= sc.nextInt();</span>
 
-<span class="nc bnc" id="L197" title="All 10 branches missed.">            if(y&lt;0 || y&gt;(boardSize-1) || x&lt;0 || x&gt;(boardSize-1) || grid[y][x].isGuessed)</span>
+<span class="nc bnc" id="L195" title="All 10 branches missed.">            if(y&lt;0 || y&gt;(boardSize-1) || x&lt;0 || x&gt;(boardSize-1) || grid[y][x].isGuessed)</span>
             {
-<span class="nc" id="L199">                System.out.print(&quot;\nIncorrect Input!!&quot;);</span>
-<span class="nc" id="L200">                return true;</span>
+<span class="nc" id="L197">                System.out.print(&quot;\nIncorrect Input!!&quot;);</span>
+<span class="nc" id="L198">                return true;</span>
             }
 
-<span class="nc bnc" id="L203" title="All 2 branches missed.">            if(grid[y][x].isMine)</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            if(grid[y][x].isMine)</span>
             {
-<span class="nc" id="L205">                displayMines();</span>
-<span class="nc" id="L206">                System.out.print(&quot;You have detonated a Mine\n============GAME OVER============&quot;);</span>
-<span class="nc" id="L207">                return false;</span>
+<span class="nc" id="L203">                displayMines();</span>
+<span class="nc" id="L204">                System.out.print(&quot;You have detonated a Mine\n============GAME OVER============&quot;);</span>
+<span class="nc" id="L205">                return false;</span>
             }
             else
             {
-<span class="nc" id="L211">                grid[y][x].setGuessed();</span>
-<span class="nc" id="L212">                updateBoard(y,x);</span>
+<span class="nc" id="L209">                grid[y][x].setGuessed();</span>
+<span class="nc" id="L210">                updateBoard(y,x);</span>
             }
-<span class="nc" id="L214">            return true;</span>
+<span class="nc" id="L212">            return true;</span>
 
         }
-<span class="nc bnc" id="L217" title="All 2 branches missed.">        else if (choice==2) {</span>
-<span class="nc" id="L218">            System.out.print(&quot;Setting Flag&quot;);</span>
-<span class="nc" id="L219">            System.out.print(&quot;\nEnter Row Number: &quot;);</span>
-<span class="nc" id="L220">            int y= sc.nextInt();</span>
-<span class="nc" id="L221">            System.out.print(&quot;Enter Column Number: &quot;);</span>
-<span class="nc" id="L222">            int x= sc.nextInt();</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">        else if (choice==2) {</span>
+<span class="nc" id="L216">            System.out.print(&quot;Setting Flag&quot;);</span>
+<span class="nc" id="L217">            System.out.print(&quot;\nEnter Row Number: &quot;);</span>
+<span class="nc" id="L218">            int y= sc.nextInt();</span>
+<span class="nc" id="L219">            System.out.print(&quot;Enter Column Number: &quot;);</span>
+<span class="nc" id="L220">            int x= sc.nextInt();</span>
 
-<span class="nc bnc" id="L224" title="All 10 branches missed.">            if(y&lt;0 || y&gt;(boardSize-1) || x&lt;0 || x&gt;(boardSize-1) || grid[y][x].isGuessed)</span>
+<span class="nc bnc" id="L222" title="All 10 branches missed.">            if(y&lt;0 || y&gt;(boardSize-1) || x&lt;0 || x&gt;(boardSize-1) || grid[y][x].isGuessed)</span>
             {
-<span class="nc" id="L226">                System.out.print(&quot;\nIncorrect Input!!&quot;);</span>
-<span class="nc" id="L227">                return true;</span>
+<span class="nc" id="L224">                System.out.print(&quot;\nIncorrect Input!!&quot;);</span>
+<span class="nc" id="L225">                return true;</span>
             }
-<span class="nc" id="L229">            grid[y][x].setFlag();</span>
+<span class="nc" id="L227">            grid[y][x].setFlag();</span>
         }
-<span class="nc" id="L231">        return true;</span>
+<span class="nc" id="L229">        return true;</span>
     }
 
     //Method to check if the game is won
     public boolean checkWin(){
-<span class="nc" id="L236">        int guessCounter = 0;</span>
-<span class="nc" id="L237">        int correctFlags = 0;</span>
-<span class="nc bnc" id="L238" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
+<span class="nc" id="L234">        int guessCounter = 0;</span>
+<span class="nc" id="L235">        int correctFlags = 0;</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">        for(int i=0; i&lt;boardSize; i++)</span>
         {
-<span class="nc bnc" id="L240" title="All 2 branches missed.">            for(int j=0; j&lt;boardSize; j++)</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">            for(int j=0; j&lt;boardSize; j++)</span>
             {
-<span class="nc bnc" id="L242" title="All 2 branches missed.">                if(grid[i][j].isGuessed)</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">                if(grid[i][j].isGuessed)</span>
                 {
-<span class="nc" id="L244">                    guessCounter++;</span>
+<span class="nc" id="L242">                    guessCounter++;</span>
                 }
-<span class="nc bnc" id="L246" title="All 4 branches missed.">                else if(grid[i][j].isFlag &amp;&amp; grid[i][j].isMine){</span>
-<span class="nc" id="L247">                    correctFlags++;</span>
+<span class="nc bnc" id="L244" title="All 4 branches missed.">                else if(grid[i][j].isFlag &amp;&amp; grid[i][j].isMine){</span>
+<span class="nc" id="L245">                    correctFlags++;</span>
                 }
             }
         }
-<span class="nc bnc" id="L251" title="All 4 branches missed.">        return guessCounter == (boardSize * boardSize) - noOfMines || correctFlags == noOfMines;</span>
+<span class="nc bnc" id="L249" title="All 4 branches missed.">        return guessCounter == (boardSize * boardSize) - noOfMines || correctFlags == noOfMines;</span>
 
     }
 
