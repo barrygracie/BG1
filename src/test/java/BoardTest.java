@@ -41,5 +41,29 @@ public class BoardTest {
 
     }
 
+    @Test
+    public void testgetRandom(){
+        tb = new Board(10,10);
+        boolean test =(tb.getRandom() instanceof Random);
+        Assertions.assertEquals(true, test, "not returning a random");
+
+    }
+
+    @Test
+    public void testSetMineCounters(){
+        tb = new Board(10,10);
+        tb.setupMines(tr);
+        tb.setMineCounters();
+        int counter = 0;
+
+        for(int i = 0;i<10;i++){
+            for(int j = 0;j<10;j++){
+                if(tb.grid[i][j].isMine){
+
+                }
+            }
+        }
+    }
+
 
 }
