@@ -39,9 +39,9 @@ public class Board {
 <span class="fc" id="L39">            int i = random.nextInt(noOfMines);</span>
 <span class="fc" id="L40">            int j = random.nextInt(noOfMines);</span>
             //TODO Check for duplicate mines
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">            while(grid[i][j].isMine){</span>
-<span class="nc" id="L43">                i = random.nextInt(noOfMines);</span>
-<span class="nc" id="L44">                j = random.nextInt(noOfMines);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">            while(grid[i][j].isMine){</span>
+<span class="fc" id="L43">                i = random.nextInt(noOfMines);</span>
+<span class="fc" id="L44">                j = random.nextInt(noOfMines);</span>
             }
 <span class="fc" id="L46">            grid[i][j].setMine();</span>
 <span class="fc" id="L47">            a++;</span>
