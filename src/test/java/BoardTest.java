@@ -115,6 +115,12 @@ public class BoardTest {
         tb.displayBoard();
     }
 
+    @Test
+    public void testDisplayMines(){
+        tb = new Board(10,10);
+        tb.displayMines();
+    }
+
 
 
 }
