@@ -62,9 +62,9 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="TileTest" name="TileTest.testTileConstructor" time="0"/>
+  <testcase classname="TileTest" name="TileTest.testGetMineCounter" time="0"/>
   <testcase classname="TileTest" name="TileTest.testSetMine" time="0"/>
   <testcase classname="TileTest" name="TileTest.testSetFlag" time="0"/>
-  <testcase classname="TileTest" name="TileTest.testSetMineCounter" time="0"/>
   <testcase classname="TileTest" name="TileTest.testSetGuessed" time="0"/>
-  <testcase classname="TileTest" name="TileTest.testGetMineCounter" time="0"/>
+  <testcase classname="TileTest" name="TileTest.testSetMineCounter" time="0"/>
 </testsuite>

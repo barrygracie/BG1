@@ -58,5 +58,59 @@ public class BoardTest {
         Assertions.assertEquals(true,g,"Guess not being set");
     }
 
+    @Test
+    public void testSetMineCounters(){
+        tb = new Board(4,4);
+        tb.setupMines(tr);
+        tb.setMineCounters();
+
+        int totalNeighbourCount = 0;
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                int count = 0;
+                if (!tb.grid[i][j].isMine) {
+                    if (i != 0) {
+                        if (tb.grid[i - 1][j].isMine) count++;
+                        if (j != 0) {
+                            if (tb.grid[i - 1][j - 1].isMine) count++;
+                        }
+                    }
+                    if (i != (3)) {
+                        if (tb.grid[i + 1][j].isMine) count++;
+                        if (j != 3) {
+                            if (tb.grid[i + 1][j + 1].isMine) count++;
+                        }
+                    }
+                    if (j != 0) {
+                        if (tb.grid[i][j - 1].isMine) count++;
+                        if (i != 3) {
+                            if (tb.grid[i + 1][j - 1].isMine) count++;
+                        }
+                    }
+                    if (j != (3)) {
+                        if (tb.grid[i][j + 1].isMine) count++;
+                        if (i != 0) {
+                            if (tb.grid[i - 1][j + 1].isMine) count++;
+                        }
+                    }
+                    totalNeighbourCount = totalNeighbourCount + count;
+                }
+            }
+        }
+
+        int totalNeighbourCount2 = 0;
+        for(int i = 0;i<4;i++){
+            for(int j = 0;j<4;j++){
+                totalNeighbourCount2 = totalNeighbourCount2 + tb.grid[i][j].getMineCounter();
+
+                }
+            }
+        Assertions.assertEquals(totalNeighbourCount2,totalNeighbourCount,"not matching");
+
+        }
+
+
+
 
 }
