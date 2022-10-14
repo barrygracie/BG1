@@ -24,7 +24,6 @@ public class BoardTest {
 
     }
 
-
     @Test
     public void testSetupMines(){
         tb = new Board(10,10);
@@ -44,8 +43,8 @@ public class BoardTest {
     @Test
     public void testgetRandom(){
         tb = new Board(10,10);
-        boolean test =(tb.getRandom() instanceof Random);
-        Assertions.assertEquals(true, test, "not returning a random");
+        boolean test =(tb.getRandom() != null);
+        Assertions.assertTrue(test, "not returning a random");
 
     }
 
@@ -55,7 +54,7 @@ public class BoardTest {
         tb = new Board(10,10);
         tb.updateBoard(5,5);
         boolean g = tb.grid[5][5].getGuessStatus();
-        Assertions.assertEquals(true,g,"Guess not being set");
+        Assertions.assertTrue(g, "Guess not being set");
     }
 
     @Test
@@ -110,6 +109,11 @@ public class BoardTest {
 
         }
 
+    @Test
+    public void testDisplayBoard(){
+        tb = new Board(10,10);
+        tb.displayBoard();
+    }
 
 
 

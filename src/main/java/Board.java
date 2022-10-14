@@ -93,8 +93,6 @@ public class Board {
             if(i<10){System.out.print(" " + i + "  ");}
             else if(i<100){System.out.print(i + "  ");}
             else{System.out.print(i+" ");}
-
-
         }
         System.out.print("\n");
         for(int i=0; i<boardSize; i++)
