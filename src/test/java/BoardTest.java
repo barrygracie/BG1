@@ -49,20 +49,13 @@ public class BoardTest {
 
     }
 
+
     @Test
-    public void testSetMineCounters(){
+    public void testUpdateBoard(){
         tb = new Board(10,10);
-        tb.setupMines(tr);
-        tb.setMineCounters();
-        int counter = 0;
-
-        for(int i = 0;i<10;i++){
-            for(int j = 0;j<10;j++){
-                if(tb.grid[i][j].isMine){
-
-                }
-            }
-        }
+        tb.updateBoard(5,5);
+        boolean g = tb.grid[5][5].getGuessStatus();
+        Assertions.assertEquals(true,g,"Guess not being set");
     }
 
 
