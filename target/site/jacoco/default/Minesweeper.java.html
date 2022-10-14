@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Minesweeper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MinesweeperMaven</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Minesweeper.java</span></div><h1>Minesweeper.java</h1><pre class="source lang-java linenums">import java.util.Scanner;
+
+<span class="fc" id="L3">public class Minesweeper {</span>
+    public static Board b;
+
+    public static void main(String[] args) {
+<span class="nc" id="L7">        Board gameBoard = runSetup();</span>
+<span class="nc" id="L8">        startGame(gameBoard);</span>
+<span class="nc" id="L9">    }</span>
+
+    public static int inputBoardSize(){
+
+<span class="nc" id="L13">        Scanner sc= new Scanner(System.in);</span>
+<span class="nc" id="L14">        int size = 0;</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        while(size&lt;1){</span>
+<span class="nc" id="L16">            System.out.println(&quot;\nPlease enter the board size: &quot;);</span>
+<span class="nc" id="L17">            size = sc.nextInt();</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">            if(size&lt;1){System.out.println(&quot;Invalid board size&quot;);}</span>
+        }
+<span class="nc" id="L20">        return size;</span>
+
+    }
+
+    public static int inputMineNo(int size){
+<span class="nc" id="L25">        Scanner sc= new Scanner(System.in);</span>
+<span class="nc" id="L26">        int mines = 0;</span>
+<span class="nc bnc" id="L27" title="All 4 branches missed.">        while(mines&lt;1 || mines&gt;= (size*size)){</span>
+<span class="nc" id="L28">            System.out.println(&quot;\nPlease enter the number of Mines: &quot;);</span>
+<span class="nc" id="L29">            mines =  sc.nextInt();</span>
+<span class="nc bnc" id="L30" title="All 4 branches missed.">            if(mines&lt;1 || mines&gt;= (size*size)){</span>
+<span class="nc" id="L31">                System.out.println(&quot;Invalid number of mines&quot;);</span>
+            }
+        }
+<span class="nc" id="L34">        return mines;</span>
+    }
+
+    public static Board runSetup(){
+<span class="nc" id="L38">        int bs = inputBoardSize();</span>
+<span class="nc" id="L39">        int nm = inputMineNo(bs);</span>
+<span class="nc" id="L40">        b = new Board(bs,nm);</span>
+<span class="nc" id="L41">        b.setupMines(b.getRandom());</span>
+<span class="nc" id="L42">        b.setMineCounters();</span>
+<span class="nc" id="L43">        return b;</span>
+    }
+
+    public static void startGame(Board b){
+<span class="nc" id="L47">        System.out.print(&quot;\n\n=========================================================\n&quot;);</span>
+<span class="nc" id="L48">        System.out.print(&quot;MINESWEEPER\n&quot;);</span>
+<span class="nc" id="L49">        System.out.print(&quot;=========================================================\n&quot;);</span>
+
+<span class="nc" id="L51">        boolean gameOn = true;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        while(gameOn)</span>
+        {
+<span class="nc" id="L54">            b.displayBoard();</span>
+<span class="nc" id="L55">            gameOn = b.playMove();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            if(b.checkWin())</span>
+            {
+<span class="nc" id="L58">                b.displayMines();</span>
+<span class="nc" id="L59">                System.out.println(&quot;\n================You WON!!!================&quot;);</span>
+<span class="nc" id="L60">                break;</span>
+            }
+        }
+<span class="nc" id="L63">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
